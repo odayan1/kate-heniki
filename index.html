@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>y=ax² 変域マスター（中3）| KATE APP</title>
+<style>
+:root{--blue:#2fbdea;--green:#8dc63f;--yellow:#f7d000;--ink:#1c3a47;--bg:#f2fafd;--red:#e05d5d;--purple:#6a4fc4;--max:#e0533d;--min:#2b7bd6;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;}
+header{background:linear-gradient(135deg,var(--blue),#1ea5d4);color:#fff;padding:12px 14px;box-shadow:0 2px 8px rgba(31,120,150,.25);position:sticky;top:0;z-index:5;}
+.brand{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto;}
+.logo{background:#fff;color:var(--blue);font-weight:800;border-radius:10px;padding:4px 10px;font-size:15px;white-space:nowrap;}
+.logo span{color:var(--green);}
+.brand-txt{flex:1;min-width:0;}
+.brand-txt h1{font-size:16px;line-height:1.3;}
+.brand-txt p{font-size:11px;opacity:.92;}
+.home-btn{background:#fff;color:#1491bd;border:none;border-radius:999px;padding:6px 12px;font:inherit;font-size:12.5px;font-weight:800;cursor:pointer;white-space:nowrap;}
+main{max-width:760px;margin:0 auto;padding:14px 12px 50px;}
+.hidden{display:none !important;}
+.card{background:#fff;border-radius:14px;padding:14px 15px;margin-bottom:12px;box-shadow:0 2px 6px rgba(31,120,150,.08);}
+h2.sec{font-size:16px;color:#1491bd;margin-bottom:8px;}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.82em;line-height:1.1;margin:0 1px;}
+.fr>span:first-child{border-bottom:1.5px solid currentColor;padding:0 2px;}
+.fr>span:last-child{padding:0 2px;}
+.eq{font-weight:800;white-space:nowrap;}
+/* home */
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+.tip{background:#eef7fb;border-radius:10px;padding:8px;text-align:center;font-size:12.5px;}
+.tip b{display:block;font-size:20px;color:#1491bd;}
+.course-grid{display:grid;gap:11px;}
+.course{background:#fff;border-radius:16px;padding:14px 16px 14px 22px;border:2px solid transparent;cursor:pointer;box-shadow:0 2px 8px rgba(31,120,150,.10);position:relative;overflow:hidden;text-align:left;width:100%;font:inherit;color:inherit;}
+.course:active{transform:scale(.98);}
+.course .stripe{position:absolute;top:0;left:0;width:8px;height:100%;}
+.course .pt{font-size:26px;font-weight:900;line-height:1;}
+.course .pt small{font-size:13px;}
+.course h3{font-size:15.5px;margin:5px 0 3px;}
+.course p{font-size:12.5px;color:#48616d;}
+.course .best{display:inline-block;margin-top:6px;font-size:11.5px;background:#eef7fb;border-radius:999px;padding:2px 10px;color:#1491bd;font-weight:700;}
+.cl .stripe{background:var(--purple);} .cl .pt{color:var(--purple);}
+.c50 .stripe{background:var(--green);} .c50 .pt{color:#5f9a1d;}
+.c70 .stripe{background:var(--blue);} .c70 .pt{color:#1491bd;}
+.c90 .stripe{background:var(--yellow);} .c90 .pt{color:#b38f00;}
+.newtag{display:inline-block;background:var(--red);color:#fff;font-size:11px;border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle;}
+/* lab */
+.svgwrap{background:#fff;border-radius:14px;padding:6px;box-shadow:0 2px 6px rgba(31,120,150,.08);margin-bottom:10px;}
+svg{width:100%;height:auto;display:block;}
+.ctrl{display:grid;gap:9px;}
+.ctrl label{font-size:13px;font-weight:800;display:flex;justify-content:space-between;align-items:center;}
+.ctrl input[type=range]{width:100%;accent-color:var(--blue);height:28px;}
+.ctrl .big{font-size:18px;color:#1491bd;}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.pbtn{background:#eef7fb;border:1.5px solid #cfe6f0;border-radius:999px;padding:5px 11px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;color:#1c3a47;}
+.pbtn.warn{background:#fdeeee;border-color:#f3b9b9;}
+.steps{font-size:14px;}
+.steps .st{padding:7px 10px;border-left:5px solid var(--blue);background:#f6fbfd;border-radius:8px;margin-bottom:6px;}
+.steps .st b.n{color:#1491bd;margin-right:4px;}
+.steps .ans{border-left-color:var(--green);background:#f3f9ea;font-size:16px;}
+.steps .mist{border-left-color:var(--red);background:#fdeeee;font-size:13px;}
+.maxc{color:var(--max);font-weight:800;} .minc{color:var(--min);font-weight:800;}
+.toggle{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin:4px 0 8px;}
+.btn{display:inline-block;border:none;border-radius:12px;padding:11px 16px;font:inherit;font-weight:800;font-size:14.5px;cursor:pointer;color:#fff;background:var(--blue);}
+.btn.g{background:var(--green);} .btn.y{background:#e2bd00;} .btn.p{background:var(--purple);} .btn.gray{background:#93a8b2;}
+.btn:disabled{opacity:.45;cursor:default;}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.backres{background:#fffbe8;border:2px solid var(--yellow);border-radius:12px;padding:8px 12px;margin-bottom:10px;font-size:13px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+/* quiz */
+.qtop{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;margin-bottom:6px;color:#48616d;}
+.dots{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
+.dot{width:14px;height:14px;border-radius:50%;background:#d7e9f1;}
+.dot.ok{background:var(--green);} .dot.ng{background:var(--red);} .dot.now{outline:3px solid var(--yellow);}
+.qtext{font-size:15.5px;line-height:1.85;margin-bottom:12px;}
+.opts{display:grid;gap:8px;}
+.opt{background:#fff;border:2px solid #d7e9f1;border-radius:12px;padding:11px 13px;text-align:left;font:inherit;font-size:16px;cursor:pointer;color:inherit;}
+.opt.sel{border-color:var(--blue);background:#eaf7fc;}
+.opt.right{border-color:var(--green);background:#f0f8e4;}
+.opt.wrong{border-color:var(--red);background:#fdeeee;}
+.chk{display:flex;gap:9px;align-items:flex-start;background:#fff;border:2px solid #d7e9f1;border-radius:12px;padding:10px 12px;font-size:14.5px;cursor:pointer;}
+.chk input{width:20px;height:20px;margin-top:3px;flex-shrink:0;accent-color:var(--blue);}
+.chk.right{border-color:var(--green);background:#f0f8e4;} .chk.wrong{border-color:var(--red);background:#fdeeee;}
+.fill{display:grid;gap:9px;}
+.frow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:15.5px;background:#f6fbfd;border-radius:10px;padding:8px 10px;}
+.frow.ok{background:#f0f8e4;} .frow.ng{background:#fdeeee;}
+.num{display:inline-flex;align-items:center;gap:3px;}
+.sgn{width:34px;height:38px;border-radius:9px;border:2px solid #cfe6f0;background:#fff;font:inherit;font-size:18px;font-weight:900;cursor:pointer;color:#1c3a47;}
+.sgn.on{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.num input{width:64px;height:38px;border-radius:9px;border:2px solid #cfe6f0;font:inherit;font-size:18px;text-align:center;}
+.fracin{display:inline-flex;flex-direction:column;align-items:center;gap:2px;}
+.fracin input{width:58px;height:34px;}
+.fracin .bar{width:62px;height:2.5px;background:#1c3a47;border-radius:2px;}
+.yn{display:flex;gap:6px;}
+.yn button{border:2px solid #cfe6f0;background:#fff;border-radius:9px;padding:6px 11px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;color:inherit;}
+.yn button.on{border-color:var(--blue);background:#eaf7fc;}
+.fb{margin-top:12px;border-radius:12px;padding:11px 13px;font-size:14px;line-height:1.8;}
+.fb.ok{background:#f0f8e4;border:2px solid var(--green);}
+.fb.ng{background:#fdeeee;border:2px solid var(--red);}
+.fb.hint{background:#fffbe8;border:2px solid var(--yellow);}
+.fb h4{font-size:15px;margin-bottom:4px;}
+.fb ol{padding-left:20px;}
+.combo{font-size:12px;font-weight:800;color:#d48a00;}
+/* result */
+.res-top{text-align:center;}
+.res-top .stars{font-size:34px;letter-spacing:4px;color:#e2bd00;}
+.res-top .sc{font-size:30px;font-weight:900;color:#1491bd;}
+.res-top .rk{font-size:15px;font-weight:800;margin-top:4px;}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+.res-stats div{background:#eef7fb;border-radius:10px;padding:7px;text-align:center;font-size:12px;}
+.res-stats b{display:block;font-size:17px;color:#1491bd;}
+.rev{border-left:6px solid var(--red);}
+.rev .q{font-size:14px;margin-bottom:6px;}
+.rev .labgo{margin-top:8px;background:#f3eefe;border:1.5px solid #c9b8f2;border-radius:10px;padding:7px 10px;font-size:13px;font-weight:800;color:var(--purple);cursor:pointer;display:inline-block;}
+@media(max-width:520px){.tips{grid-template-columns:1fr;} .brand-txt h1{font-size:14.5px;} .qtext{font-size:15px;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">KATE<span>ぷら</span></div>
+    <div class="brand-txt"><h1>y=ax² 変域マスター（中3）</h1><p>つまずきを、プラスに。｜最大値・最小値はグラフで見抜く</p></div>
+    <button class="home-btn" id="homeBtn" onclick="goHomeBtn()">🏠 ホーム</button>
+  </div>
+</header>
+<main>
+
+<!-- ===== HOME ===== -->
+<section id="home">
+  <div class="card">
+    <h2 class="sec">変域は「3つのチェック」で解ける！</h2>
+    <div style="font-size:13.5px">関数 <span class="eq">y=ax²</span> の変域は、1次関数とちがって<b>「両はしの値」だけでは決まらない</b>ことがあります。</div>
+    <div class="tips">
+      <div class="tip"><b>①</b>両はしの x を<br>代入して y を出す</div>
+      <div class="tip"><b>②</b>x の変域に<br><b>0</b> がふくまれる？</div>
+      <div class="tip"><b>③</b>ふくまれるなら<br>y の片方は <b style="display:inline;font-size:13px">0</b></div>
+    </div>
+  </div>
+  <div class="course-grid">
+    <button class="course cl" onclick="openLab()"><div class="stripe"></div>
+      <div class="pt">🧪 <small>動かして理解</small></div><h3>グラフを動かして、最大・最小を見つけよう</h3>
+      <p>a と x の変域を動かすと、グラフの「使う部分」と y の変域がリアルタイムで変わる。まずはここから！</p></button>
+    <button class="course c50" onclick="startCourse(50)"><div class="stripe"></div>
+      <div class="pt">50<small>点コース</small></div><h3>4択で変域をえらぶ（10問）</h3>
+      <p>正しい y の変域・最大値・最小値をえらぶ。まちがいの選択肢は「よくあるミス」でできています。</p><span class="best" id="best50">ベスト：—</span></button>
+    <button class="course c70" onclick="startCourse(70)"><div class="stripe"></div>
+      <div class="pt">70<small>点コース</small></div><h3>途中の式を入れて求める（8問）</h3>
+      <p>①両はしの y → ②0をふくむ？ → ③y の変域、の順に自分で数を入れる。</p><span class="best" id="best70">ベスト：—</span></button>
+    <button class="course c90" onclick="startCourse(90)"><div class="stripe"></div>
+      <div class="pt">90<small>点コース</small></div><h3>考え方えらび＋a を求める（6問）</h3>
+      <p>正しい考え方を全部えらぶ問題と、変域から比例定数 a を逆算する問題。</p><span class="best" id="best90">ベスト：—</span></button>
+  </div>
+  <p style="margin-top:12px;font-size:11.5px;color:#64808c;text-align:center">数字は毎回ランダムで変わります。何度でもチャレンジ！</p>
+</section>
+
+<!-- ===== LAB ===== -->
+<section id="lab" class="hidden">
+  <div class="backres hidden" id="labBack"><span>📒 さっきの結果・復習にもどれます</span><button class="btn y" style="padding:7px 12px;font-size:13px" onclick="backToResult()">結果にもどる</button></div>
+  <div class="card" style="padding:10px 13px">
+    <div style="font-size:16px;font-weight:900;text-align:center" id="labEq"></div>
+  </div>
+  <div class="svgwrap"><svg id="gsvg" viewBox="0 0 360 330"></svg></div>
+  <div class="card ctrl">
+    <label>比例定数 a <span class="big" id="aLbl"></span></label>
+    <input type="range" id="aSl" min="0" max="11" step="1" value="9">
+    <label>x の変域の左はし <span class="big" id="pLbl"></span></label>
+    <input type="range" id="pSl" min="-6" max="6" step="1" value="-3">
+    <label>x の変域の右はし <span class="big" id="qLbl"></span></label>
+    <input type="range" id="qSl" min="-6" max="6" step="1" value="1">
+    <div style="font-size:12.5px;font-weight:800;margin-top:2px">4つのパターンを見くらべよう</div>
+    <div class="presets">
+      <button class="pbtn" onclick="preset(1,1,1,3)">a&gt;0・0をふくまない</button>
+      <button class="pbtn" onclick="preset(1,1,-3,1)">a&gt;0・0をふくむ</button>
+      <button class="pbtn" onclick="preset(-1,1,1,3)">a&lt;0・0をふくまない</button>
+      <button class="pbtn" onclick="preset(-1,4,-4,2)">a&lt;0・0をふくむ</button>
+      <button class="pbtn warn" onclick="preset(1,3,-6,3)">⚠ ミスしやすい例</button>
+    </div>
+  </div>
+  <div class="card">
+    <label class="toggle"><input type="checkbox" id="hideChk"> 答えをかくして、先に自分で予想する</label>
+    <div class="steps" id="steps"></div>
+    <button class="btn g hidden" id="revealBtn" onclick="reveal()">答えを見る</button>
+  </div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section id="quiz" class="hidden">
+  <div class="qtop"><span id="qCourse"></span><span>⏱ <span id="qTime">0:00</span>　⭐ <span id="qPts">0</span>pt</span></div>
+  <div class="dots" id="dots"></div>
+  <div class="card">
+    <div class="combo" id="combo"></div>
+    <div class="qtext" id="qText"></div>
+    <div id="qBody"></div>
+    <div id="fb"></div>
+    <div class="btnrow"><button class="btn" id="checkBtn" onclick="checkAns()">こたえ合わせ</button><button class="btn g hidden" id="nextBtn" onclick="nextQ()">次へ ▶</button></div>
+  </div>
+</section>
+
+<!-- ===== RESULT ===== -->
+<section id="result" class="hidden">
+  <div class="card res-top">
+    <div class="stars" id="rStars"></div>
+    <div class="sc" id="rScore"></div>
+    <div class="rk" id="rRank"></div>
+    <div class="res-stats"><div>ポイント<b id="rPts"></b></div><div>タイム<b id="rTime"></b></div><div>最大連続<b id="rCombo"></b></div></div>
+  </div>
+  <div class="btnrow" style="margin-bottom:12px">
+    <button class="btn" onclick="startCourse(CUR.course)">🔁 もう一度チャレンジ</button>
+    <button class="btn p" onclick="openLab(null,true)">🧪 インタラクティブ教材</button>
+    <button class="btn gray" onclick="goHome()">コース選択にもどる</button>
+  </div>
+  <div id="rReview"></div>
+</section>
+
+</main>
+<script>
+/* ========== 有理数ユーティリティ ========== */
+const AS=[{n:-3,d:1},{n:-2,d:1},{n:-1,d:1},{n:-1,d:2},{n:-1,d:3},{n:-1,d:4},{n:1,d:4},{n:1,d:3},{n:1,d:2},{n:1,d:1},{n:2,d:1},{n:3,d:1}];
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){const t=a%b;a=b;b=t;}return a||1;}
+function F(n,d){d=d||1;if(d<0){n=-n;d=-d;}const g=gcd(n,d);return {n:n/g,d:d/g};}
+const ZERO={n:0,d:1};
+function V(f){return f.n/f.d;}
+function eqF(a,b){return a.n*b.d===b.n*a.d;}
+function yv(a,x){return F(a.n*x*x,a.d);}
+function negF(f){return F(-f.n,f.d);}
+function fH(f){const s=f.n<0?'−':'';const m=Math.abs(f.n);if(f.d===1)return s+m;return s+'<span class="fr"><span>'+m+'</span><span>'+f.d+'</span></span>';}
+function fT(f){const s=f.n<0?'−':'';const m=Math.abs(f.n);return f.d===1?s+m:s+m+'/'+f.d;}
+function xH(x){return x<0?'−'+Math.abs(x):''+x;}
+function pxH(x){return x<0?'(−'+Math.abs(x)+')':''+x;}
+function aH(a){const s=a.n<0?'−':'';const m=Math.abs(a.n);if(a.d===1)return s+(m===1?'':m)+'x²';return s+'<span class="fr"><span>'+m+'</span><span>'+a.d+'</span></span>x²';}
+function aCoefH(a){const s=a.n<0?'−':'';const m=Math.abs(a.n);if(a.d===1)return s+m;return s+'<span class="fr"><span>'+m+'</span><span>'+a.d+'</span></span>';}
+function rH(lo,hi){return '<span class="eq">'+fH(lo)+' ≦ y ≦ '+fH(hi)+'</span>';}
+function xrH(p,q){return '<span class="eq">'+xH(p)+' ≦ x ≦ '+xH(q)+'</span>';}
+function solve(a,p,q){const yp=yv(a,p),yq=yv(a,q);const span=p<=0&&0<=q;const arr=[yp,yq];if(span)arr.push(ZERO);arr.sort((u,v)=>V(u)-V(v));return {yp,yq,span,lo:arr[0],hi:arr[arr.length-1]};}
+function naive(a,p,q){const yp=yv(a,p),yq=yv(a,q);return V(yp)<=V(yq)?{lo:yp,hi:yq}:{lo:yq,hi:yp};}
+function rint(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function $(id){return document.getElementById(id);}
+function show(id){$(id).classList.remove('hidden');}
+function hide(id){$(id).classList.add('hidden');}
+
+/* ========== 解説（考え方の順番） ========== */
+function explainHTML(a,p,q){
+  const s=solve(a,p,q);
+  let h='<ol>';
+  h+='<li>両はしを代入：x='+xH(p)+' のとき y='+aCoefH(a)+'×'+pxH(p)+'²='+fH(s.yp)+'、x='+xH(q)+' のとき y='+aCoefH(a)+'×'+pxH(q)+'²='+fH(s.yq)+'</li>';
+  if(s.span){
+    h+='<li>x の変域 '+xrH(p,q)+' に <b>0 がふくまれる</b> → グラフは原点（'+(a.n>0?'谷の底':'山のてっぺん')+'）を通る</li>';
+    h+='<li>'+(a.n>0?'<span class="minc">最小値は 0</span>、<span class="maxc">最大値</span>は x の絶対値が大きい方の '+fH(s.hi):'<span class="maxc">最大値は 0</span>、<span class="minc">最小値</span>は x の絶対値が大きい方の '+fH(s.lo))+'</li>';
+  }else{
+    h+='<li>x の変域に <b>0 はふくまれない</b> → 両はしの値の小さい方が最小、大きい方が最大</li>';
+  }
+  h+='<li>答え：'+rH(s.lo,s.hi)+'</li></ol>';
+  const nv=naive(a,p,q);
+  if(s.span&&!(eqF(nv.lo,s.lo)&&eqF(nv.hi,s.hi))) h+='<div style="font-size:12.5px;margin-top:4px">⚠ 両はしだけで考えると '+rH(nv.lo,nv.hi)+' になってしまう。0 を忘れないこと！</div>';
+  return h;
+}
+
+/* ========== LAB（中心装置） ========== */
+const LAB={a:AS[9],p:-3,q:1,hidden:false,revealed:false};
+let LAB_FROM_RESULT=false;
+const SV={W:360,H:330,x0:22,x1:338,y0:20,y1:300,xmin:-7,xmax:7};
+function niceStep(E){const c=[1,2,3,5,10,15,20,25];for(const s of c)if(E/s<=6.5)return s;return 30;}
+function drawGraph(){
+  const a=LAB.a,p=LAB.p,q=LAB.q,av=V(a);const s=solve(a,p,q);
+  const E=Math.abs(av)*36;let ymin,ymax;
+  if(av>0){ymin=-0.14*E;ymax=1.08*E;}else{ymin=-1.08*E;ymax=0.14*E;}
+  const X=x=>SV.x0+(x-SV.xmin)/(SV.xmax-SV.xmin)*(SV.x1-SV.x0);
+  const Y=y=>SV.y1-(y-ymin)/(ymax-ymin)*(SV.y1-SV.y0);
+  let g='<defs><clipPath id="cp"><rect x="'+SV.x0+'" y="'+SV.y0+'" width="'+(SV.x1-SV.x0)+'" height="'+(SV.y1-SV.y0)+'"/></clipPath></defs>';
+  g+='<rect x="0" y="0" width="360" height="330" fill="#fff"/>';
+  // grid
+  for(let x=-7;x<=7;x++){g+='<line x1="'+X(x)+'" y1="'+SV.y0+'" x2="'+X(x)+'" y2="'+SV.y1+'" stroke="#eef3f6"/>';}
+  const st=niceStep(E);
+  for(let y=Math.ceil(ymin/st)*st;y<=ymax;y+=st){g+='<line x1="'+SV.x0+'" y1="'+Y(y)+'" x2="'+SV.x1+'" y2="'+Y(y)+'" stroke="#eef3f6"/>';if(y!==0)g+='<text x="'+(X(0)-4)+'" y="'+(Y(y)+4)+'" font-size="10" text-anchor="end" fill="#9ab">'+y+'</text>';}
+  // x band (変域)
+  g+='<rect x="'+X(p)+'" y="'+SV.y0+'" width="'+(X(q)-X(p))+'" height="'+(SV.y1-SV.y0)+'" fill="#8dc63f" opacity=".10"/>';
+  // axes
+  g+='<line x1="'+SV.x0+'" y1="'+Y(0)+'" x2="'+SV.x1+'" y2="'+Y(0)+'" stroke="#1c3a47" stroke-width="1.4"/>';
+  g+='<line x1="'+X(0)+'" y1="'+SV.y0+'" x2="'+X(0)+'" y2="'+SV.y1+'" stroke="#1c3a47" stroke-width="1.4"/>';
+  g+='<text x="'+(SV.x1-2)+'" y="'+(Y(0)-5)+'" font-size="12" text-anchor="end" font-style="italic">x</text><text x="'+(X(0)+6)+'" y="'+(SV.y0+11)+'" font-size="12" font-style="italic">y</text><text x="'+(X(0)-4)+'" y="'+(Y(0)+13)+'" font-size="10" text-anchor="end">O</text>';
+  for(let x=-6;x<=6;x+=2){if(x!==0)g+='<text x="'+X(x)+'" y="'+(Y(0)+13)+'" font-size="10" text-anchor="middle" fill="#789">'+x+'</text>';}
+  // parabola full (faint)
+  let d='';for(let i=0;i<=140;i++){const x=-7+i*0.1;const y=av*x*x;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(y).toFixed(1)+' ';}
+  g+='<path d="'+d+'" fill="none" stroke="#b9cdd6" stroke-width="2" stroke-dasharray="5 4" clip-path="url(#cp)"/>';
+  // used part
+  let d2='';const n=Math.max(2,Math.round((q-p)*20));for(let i=0;i<=n;i++){const x=p+(q-p)*i/n;const y=av*x*x;d2+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(y).toFixed(1)+' ';}
+  g+='<path d="'+d2+'" fill="none" stroke="#2fbdea" stroke-width="4.5" stroke-linecap="round" clip-path="url(#cp)"/>';
+  // x-range bar on x axis
+  g+='<line x1="'+X(p)+'" y1="'+Y(0)+'" x2="'+X(q)+'" y2="'+Y(0)+'" stroke="#8dc63f" stroke-width="6" stroke-linecap="round" opacity=".85"/>';
+  // endpoints vertical guides
+  [[p,s.yp],[q,s.yq]].forEach(([x,yf])=>{g+='<line x1="'+X(x)+'" y1="'+Y(0)+'" x2="'+X(x)+'" y2="'+Y(V(yf))+'" stroke="#8dc63f" stroke-dasharray="3 3"/>';});
+  const showAns=!(LAB.hidden&&!LAB.revealed);
+  if(showAns){
+    // y-range band on y axis
+    g+='<rect x="'+(X(0)-7)+'" y="'+Y(V(s.hi))+'" width="14" height="'+Math.max(2,Y(V(s.lo))-Y(V(s.hi)))+'" fill="#f7d000" opacity=".75" rx="4"/>';
+    // horizontal guides from max/min
+    const hiX=pointFor(s.hi,a,p,q),loX=pointFor(s.lo,a,p,q);
+    g+='<line x1="'+X(0)+'" y1="'+Y(V(s.hi))+'" x2="'+X(hiX)+'" y2="'+Y(V(s.hi))+'" stroke="#e0533d" stroke-dasharray="4 3" stroke-width="1.6"/>';
+    g+='<line x1="'+X(0)+'" y1="'+Y(V(s.lo))+'" x2="'+X(loX)+'" y2="'+Y(V(s.lo))+'" stroke="#2b7bd6" stroke-dasharray="4 3" stroke-width="1.6"/>';
+    g+=star(X(hiX),Y(V(s.hi)),'#e0533d');g+=star(X(loX),Y(V(s.lo)),'#2b7bd6');
+    // ラベルは画面の内側（y軸の方）に置く：はみ出し防止
+    const place=(x)=>x<0?['start',13]:x>0?['end',-13]:['start',13];
+    const [s1,o1]=place(hiX);g+=lbl(X(hiX)+o1,Y(V(s.hi))+(av>0?14:-10),'最大 '+fT(s.hi),'#e0533d',s1);
+    const [s2,o2]=place(loX);g+=lbl(X(loX)+o2,Y(V(s.lo))+(av>0?-10:-10),'最小 '+fT(s.lo),'#2b7bd6',s2);
+  }
+  // endpoint dots
+  g+='<circle cx="'+X(p)+'" cy="'+Y(V(s.yp))+'" r="5" fill="#fff" stroke="#1c3a47" stroke-width="2"/>';
+  g+='<circle cx="'+X(q)+'" cy="'+Y(V(s.yq))+'" r="5" fill="#fff" stroke="#1c3a47" stroke-width="2"/>';
+  if(s.span)g+='<circle cx="'+X(0)+'" cy="'+Y(0)+'" r="5.5" fill="#f39c12" stroke="#fff" stroke-width="1.5"/>';
+  $('gsvg').innerHTML=g;
+}
+function pointFor(f,a,p,q){if(p<=0&&0<=q&&V(f)===0)return 0;if(eqF(f,yv(a,p)))return p;return q;}
+function star(cx,cy,col){return '<circle cx="'+cx+'" cy="'+cy+'" r="9" fill="none" stroke="'+col+'" stroke-width="3"/>';}
+function lbl(x,y,t,col,anchor){return '<text x="'+x+'" y="'+y+'" font-size="13" font-weight="800" fill="'+col+'" text-anchor="'+anchor+'" stroke="#fff" stroke-width="3" paint-order="stroke">'+t+'</text>';}
+function labSteps(){
+  const a=LAB.a,p=LAB.p,q=LAB.q;const s=solve(a,p,q);const showAns=!(LAB.hidden&&!LAB.revealed);
+  $('labEq').innerHTML='y = '+aH(a)+'　（'+xrH(p,q)+'）';
+  $('aLbl').innerHTML=aCoefH(a);$('pLbl').textContent=xH(p);$('qLbl').textContent=xH(q);
+  let h='<div class="st"><b class="n">①</b>両はしの y：x='+xH(p)+' → y='+fH(s.yp)+'、x='+xH(q)+' → y='+fH(s.yq)+'</div>';
+  h+='<div class="st"><b class="n">②</b>x の変域に 0 は… '+(s.span?'<b style="color:#f39c12">ふくまれる</b>（オレンジの点＝原点を通る）':'<b>ふくまれない</b>')+'</div>';
+  if(showAns){
+    if(s.span)h+='<div class="st"><b class="n">③</b>'+(V(a)>0?'上に開くグラフ → <span class="minc">最小値は 0</span>（谷の底）':'下に開くグラフ → <span class="maxc">最大値は 0</span>（山のてっぺん）')+'</div>';
+    else h+='<div class="st"><b class="n">③</b>0 を通らないので、両はしの値だけで決まる</div>';
+    h+='<div class="st ans"><b class="n">答え</b>'+rH(s.lo,s.hi)+'</div>';
+    const nv=naive(a,p,q);
+    if(s.span&&!(eqF(nv.lo,s.lo)&&eqF(nv.hi,s.hi)))h+='<div class="st mist">⚠ よくあるミス：両はしだけ見ると '+rH(nv.lo,nv.hi)+' にしてしまう。グラフを見ると、青い線は 0 まで行っているね！</div>';
+  }else{
+    h+='<div class="st"><b class="n">③</b>最大値・最小値はどこ？　グラフの<b style="color:#2fbdea">青い部分</b>のいちばん上と下を探そう</div>';
+  }
+  $('steps').innerHTML=h;
+  $('revealBtn').classList.toggle('hidden',!(LAB.hidden&&!LAB.revealed));
+}
+function labUpdate(){drawGraph();labSteps();}
+function syncSliders(){$('aSl').value=AS.findIndex(x=>x.n===LAB.a.n&&x.d===LAB.a.d);$('pSl').value=LAB.p;$('qSl').value=LAB.q;}
+function preset(n,d,p,q){LAB.a=F(n,d);LAB.p=p;LAB.q=q;LAB.revealed=false;syncSliders();labUpdate();}
+function reveal(){LAB.revealed=true;labUpdate();}
+$('aSl').addEventListener('input',e=>{LAB.a=AS[+e.target.value];LAB.revealed=false;labUpdate();});
+$('pSl').addEventListener('input',e=>{let v=+e.target.value;if(v>=LAB.q){if(v>=6){v=5;e.target.value=5;}LAB.q=v+1;$('qSl').value=LAB.q;}LAB.p=v;LAB.revealed=false;labUpdate();});
+$('qSl').addEventListener('input',e=>{let v=+e.target.value;if(v<=LAB.p){if(v<=-6){v=-5;e.target.value=-5;}LAB.p=v-1;$('pSl').value=LAB.p;}LAB.q=v;LAB.revealed=false;labUpdate();});
+$('hideChk').addEventListener('change',e=>{LAB.hidden=e.target.checked;LAB.revealed=false;labUpdate();});
+function openLab(pr,fromResult){
+  LAB_FROM_RESULT=!!fromResult;
+  if(pr){LAB.a=pr.a;LAB.p=pr.p;LAB.q=pr.q;LAB.revealed=false;}
+  syncSliders();hideAll();show('lab');$('labBack').classList.toggle('hidden',!LAB_FROM_RESULT);labUpdate();window.scrollTo(0,0);
+}
+function backToResult(){hideAll();show('result');window.scrollTo(0,0);}
+
+/* ========== 問題生成 ========== */
+function xsFor(a){if(a.d===2||a.d===4)return [-6,-4,-2,2,4,6];if(a.d===3)return [-6,-3,3,6];const m=Math.abs(a.n)===3?3:4;const r=[];for(let x=-m;x<=m;x++)if(x!==0)r.push(x);return r;}
+function genPQ(a,kind){
+  const xs=xsFor(a);const neg=xs.filter(x=>x<0),pos=xs.filter(x=>x>0);
+  if(kind==='span')return [pick(neg),pick(pos)];
+  if(kind==='zero')return Math.random()<.5?[0,pick(pos)]:[pick(neg),0];
+  const L=kind==='neg'?neg:pos;const i=rint(0,L.length-2);const j=rint(i+1,L.length-1);return [L[i],L[j]];
+}
+function genProb(kind,sign){
+  let pool=AS.filter(a=>sign===0||Math.sign(a.n)===sign);
+  const a=pick(pool);const [p,q]=genPQ(a,kind);return Object.assign({a,p,q,kind},solve(a,p,q));
+}
+function kindList(n,spanN){const k=[];for(let i=0;i<spanN;i++)k.push('span');const rest=['neg','pos','zero'];let i=0;while(k.length<n){k.push(rest[i%3]);i++;}return shuffle(k);}
+function signList(n){const s=[];for(let i=0;i<n;i++)s.push(i%2?-1:1);return shuffle(s);}
+function rangeKey(lo,hi){return fT(lo)+'|'+fT(hi);}
+
+function build50(){
+  const kinds=kindList(10,6),signs=signList(10);const qs=[];
+  for(let i=0;i<10;i++){
+    const P=genProb(kinds[i],signs[i]);
+    const type=i<6?'range':(i%2?'max':'min');
+    if(type==='range'){
+      const correct={lo:P.lo,hi:P.hi};const cands=[];const nv=naive(P.a,P.p,P.q);cands.push(nv);
+      cands.push({lo:negF(P.hi),hi:negF(P.lo)});
+      if(V(P.a)>0)cands.push({lo:ZERO,hi:V(P.yp)<V(P.yq)?P.yp:P.yq});else cands.push({lo:V(P.yp)>V(P.yq)?P.yp:P.yq,hi:ZERO});
+      cands.push({lo:F(P.a.n*P.p,P.a.d),hi:F(P.a.n*P.q,P.a.d)});
+      cands.push({lo:F(Math.min(P.p*P.p,P.q*P.q)),hi:F(Math.max(P.p*P.p,P.q*P.q))});
+      const seen=new Set([rangeKey(correct.lo,correct.hi)]);const opts=[{r:correct,ok:true}];
+      for(const c of cands){if(V(c.lo)>V(c.hi))continue;const k=rangeKey(c.lo,c.hi);if(seen.has(k))continue;seen.add(k);opts.push({r:c,ok:false});if(opts.length===4)break;}
+      let t=1;while(opts.length<4){const c2=V(P.a)>0?{lo:correct.lo,hi:F(correct.hi.n+t*correct.hi.d,correct.hi.d)}:{lo:F(correct.lo.n-t*correct.lo.d,correct.lo.d),hi:correct.hi};const k=rangeKey(c2.lo,c2.hi);if(!seen.has(k)){seen.add(k);opts.push({r:c2,ok:false});}t++;}
+      qs.push({type:'choice',P,text:'関数 <span class="eq">y = '+aH(P.a)+'</span> で、x の変域が '+xrH(P.p,P.q)+' のとき、y の変域を求めなさい。',opts:shuffle(opts).map(o=>({h:rH(o.r.lo,o.r.hi),ok:o.ok}))});
+    }else{
+      const want=type==='max'?P.hi:P.lo;const cands=[P.yp,P.yq,ZERO,negF(want),naive(P.a,P.p,P.q)[type==='max'?'hi':'lo']];
+      const seen=new Set([fT(want)]);const opts=[{f:want,ok:true}];
+      for(const c of cands){const k=fT(c);if(seen.has(k))continue;seen.add(k);opts.push({f:c,ok:false});if(opts.length===4)break;}
+      let t=1;while(opts.length<4){const c=F(want.n+t*want.d,want.d);const k=fT(c);if(!seen.has(k)){seen.add(k);opts.push({f:c,ok:false});}t++;}
+      qs.push({type:'choice',P,text:'関数 <span class="eq">y = '+aH(P.a)+'</span> で、x の変域が '+xrH(P.p,P.q)+' のとき、y の<b>'+(type==='max'?'最大値':'最小値')+'</b>を求めなさい。',opts:shuffle(opts).map(o=>({h:'<span class="eq">'+fH(o.f)+'</span>',ok:o.ok}))});
+    }
+  }
+  return qs;
+}
+function build70(){
+  const kinds=kindList(8,5),signs=signList(8);const qs=[];
+  for(let i=0;i<8;i++){const P=genProb(kinds[i],signs[i]);qs.push({type:'fill',P,text:'関数 <span class="eq">y = '+aH(P.a)+'</span> で、x の変域が '+xrH(P.p,P.q)+' のとき、y の変域を求めよう。順番に入れてね。'});}
+  return qs;
+}
+function build90(){
+  const qs=[];const k1=shuffle(['span','span','neg']);const k2=shuffle(['span','span','pos']);const s1=shuffle([1,-1,pick([1,-1])]);const s2=shuffle([1,-1,pick([1,-1])]);
+  for(let i=0;i<3;i++){const P=genProb(k1[i],s1[i]);qs.push(buildReason(P));}
+  for(let i=0;i<3;i++){const P=genProb(k2[i],s2[i]);qs.push({type:'afind',P,text:'関数 <span class="eq">y = ax²</span> で、x の変域が '+xrH(P.p,P.q)+' のとき、y の変域は '+rH(P.lo,P.hi)+' になった。<b>a の値</b>を求めなさい。'});}
+  return [qs[0],qs[3],qs[1],qs[4],qs[2],qs[5]];
+}
+function buildReason(P){
+  const st=[];const pos=V(P.a)>0;
+  st.push({h:'x='+xH(P.p)+' のとき y='+fH(P.yp),ok:true});
+  if(V(P.yq)!==0)st.push({h:'x='+xH(P.q)+' のとき y='+fH(negF(P.yq)),ok:false});
+  if(P.span){
+    st.push({h:'x の変域に 0 がふくまれるので、グラフは原点を通る',ok:true});
+    st.push({h:pos?'最小値は 0 になる':'最大値は 0 になる',ok:true});
+    st.push({h:pos?'最大値は 0 になる':'最小値は 0 になる',ok:false});
+  }else{
+    st.push({h:'x の変域に 0 はふくまれないので、両はしの値だけで考えればよい',ok:true});
+    st.push({h:pos?'最小値は 0 になる':'最大値は 0 になる',ok:false});
+  }
+  st.push({h:'y の変域は '+rH(P.lo,P.hi),ok:true});
+  const nv=naive(P.a,P.p,P.q);
+  if(P.span&&!(eqF(nv.lo,P.lo)&&eqF(nv.hi,P.hi)))st.push({h:'y の変域は '+rH(nv.lo,nv.hi),ok:false});
+  else st.push({h:'y の変域は '+rH(negF(P.hi),negF(P.lo)),ok:false});
+  return {type:'reason',P,text:'関数 <span class="eq">y = '+aH(P.a)+'</span> で、x の変域が '+xrH(P.p,P.q)+' のとき、y の変域を求める。<b>正しいものをすべて</b>えらびなさい。',opts:shuffle(st)};
+}
+
+/* ========== クイズ進行 ========== */
+const CUR={course:50,qs:[],i:0,ok:0,pts:0,combo:0,maxCombo:0,res:[],t0:0,timer:null,answered:false,done:true,fillState:null};
+function startCourse(c){
+  CUR.course=c;CUR.qs=c===50?build50():c===70?build70():build90();
+  CUR.i=0;CUR.ok=0;CUR.pts=0;CUR.combo=0;CUR.maxCombo=0;CUR.res=[];CUR.done=false;CUR.t0=Date.now();
+  clearInterval(CUR.timer);CUR.timer=setInterval(()=>{$('qTime').textContent=fmtTime(Date.now()-CUR.t0);},500);
+  $('qCourse').textContent=c+'点コース';hideAll();show('quiz');renderQ();window.scrollTo(0,0);
+}
+function fmtTime(ms){const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+function renderDots(){let h='';CUR.qs.forEach((q,k)=>{let c='dot';if(k<CUR.res.length)c+=CUR.res[k].ok?' ok':' ng';if(k===CUR.i&&!CUR.done)c+=' now';h+='<span class="'+c+'"></span>';});$('dots').innerHTML=h;}
+function renderQ(){
+  const Q=CUR.qs[CUR.i];CUR.answered=false;renderDots();$('qPts').textContent=CUR.pts;
+  $('combo').textContent=CUR.combo>=2?'🔥 '+CUR.combo+'問連続正解中！':'';
+  $('qText').innerHTML='<b>Q'+(CUR.i+1)+'.</b> '+Q.text;$('fb').innerHTML='';
+  hide('nextBtn');show('checkBtn');$('checkBtn').disabled=false;
+  let h='';
+  if(Q.type==='choice'){h='<div class="opts">'+Q.opts.map((o,k)=>'<button class="opt" id="opt'+k+'" onclick="selOpt('+k+')">'+o.h+'</button>').join('')+'</div>';Q.sel=-1;$('checkBtn').disabled=true;}
+  else if(Q.type==='reason'){h='<div class="opts">'+Q.opts.map((o,k)=>'<label class="chk" id="chk'+k+'"><input type="checkbox" id="cb'+k+'"><span>'+o.h+'</span></label>').join('')+'</div>';}
+  else if(Q.type==='fill'){
+    const P=Q.P;
+    h='<div class="fill">'+
+      '<div class="frow" id="fr1"><b>①</b> x='+xH(P.p)+' のとき y = '+numIn('f1')+'</div>'+
+      '<div class="frow" id="fr2"><b>①</b> x='+xH(P.q)+' のとき y = '+numIn('f2')+'</div>'+
+      '<div class="frow" id="fr3"><b>②</b> x の変域に 0 は <span class="yn"><button id="yn1" onclick="setYN(1)">ふくまれる</button><button id="yn0" onclick="setYN(0)">ふくまれない</button></span></div>'+
+      '<div class="frow" id="fr4"><b>③</b> '+numIn('f3')+' ≦ y ≦ '+numIn('f4')+'</div></div>';
+    CUR.fillState={yn:null};
+  }else if(Q.type==='afind'){
+    h='<div class="fill"><div class="frow" id="fr5"><b>a =</b> <span class="num"><button class="sgn" id="sga" onclick="toggleSign(\'a\')">＋</button><span class="fracin"><input id="an" inputmode="numeric" autocomplete="off"><span class="bar"></span><input id="ad" inputmode="numeric" autocomplete="off" placeholder="1"></span></span></div><div style="font-size:12px;color:#64808c">分数でないときは、分母を空らん（または1）にしてね。符号は「＋／−」ボタンで切りかえ。</div></div>';
+    SIGN.a=1;
+  }
+  $('qBody').innerHTML=h;
+}
+const SIGN={};
+function numIn(id){SIGN[id]=1;return '<span class="num"><button class="sgn" id="sg'+id+'" onclick="toggleSign(\''+id+'\')">＋</button><input id="'+id+'" inputmode="numeric" autocomplete="off"></span>';}
+function toggleSign(id){SIGN[id]=-SIGN[id];const b=$('sg'+id);b.textContent=SIGN[id]<0?'−':'＋';b.classList.toggle('on',SIGN[id]<0);}
+function readNum(id){const s=$(id).value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[−ー‐-]/g,'-');if(s==='')return null;if(!/^-?\d+$/.test(s))return NaN;let v=parseInt(s,10);if(s.startsWith('-'))return v;return v*SIGN[id];}
+function setYN(v){if(CUR.answered)return;CUR.fillState.yn=v;$('yn1').classList.toggle('on',v===1);$('yn0').classList.toggle('on',v===0);}
+function selOpt(k){if(CUR.answered)return;const Q=CUR.qs[CUR.i];Q.sel=k;Q.opts.forEach((o,j)=>$('opt'+j).classList.toggle('sel',j===k));$('checkBtn').disabled=false;}
+function checkAns(){
+  if(CUR.answered)return;const Q=CUR.qs[CUR.i];const P=Q.P;let ok=false;
+  if(Q.type==='choice'){if(Q.sel<0)return;ok=Q.opts[Q.sel].ok;Q.opts.forEach((o,j)=>{const b=$('opt'+j);if(o.ok)b.classList.add('right');else if(j===Q.sel)b.classList.add('wrong');});}
+  else if(Q.type==='reason'){let all=true;Q.opts.forEach((o,j)=>{const c=$('cb'+j).checked;const L=$('chk'+j);if(c===o.ok){if(o.ok)L.classList.add('right');}else{all=false;L.classList.add('wrong');}if(o.ok&&!c)L.classList.add('wrong');});ok=all;}
+  else if(Q.type==='fill'){
+    const v=[readNum('f1'),readNum('f2'),readNum('f3'),readNum('f4')];
+    if(v.some(x=>x===null)||CUR.fillState.yn===null){$('fb').innerHTML='<div class="fb hint">空らんがあるよ。全部うめてから「こたえ合わせ」してね。</div>';return;}
+    const r1=v[0]===V(P.yp),r2=v[1]===V(P.yq),r3=(CUR.fillState.yn===1)===P.span,r4=v[2]===V(P.lo)&&v[3]===V(P.hi);
+    $('fr1').classList.add(r1?'ok':'ng');$('fr2').classList.add(r2?'ok':'ng');$('fr3').classList.add(r3?'ok':'ng');$('fr4').classList.add(r4?'ok':'ng');
+    ok=r1&&r2&&r3&&r4;
+  }else if(Q.type==='afind'){
+    const nS=$('an').value.trim(),dS=$('ad').value.trim();
+    if(nS===''){$('fb').innerHTML='<div class="fb hint">分子（上の欄）を入れてね。</div>';return;}
+    if(!/^\d+$/.test(nS)||(dS!==''&&!/^\d+$/.test(dS))){$('fb').innerHTML='<div class="fb hint">数字だけを入れてね（符号は＋／−ボタン）。</div>';return;}
+    const n=parseInt(nS,10)*SIGN.a,d=dS===''?1:parseInt(dS,10);
+    if(d===0){$('fb').innerHTML='<div class="fb hint">分母に 0 は入れられないよ。</div>';return;}
+    if(n*P.a.d===P.a.n*d&&gcd(n,d)!==1){$('fb').innerHTML='<div class="fb hint">値は合っているよ！ あと一歩、<b>約分</b>しよう。</div>';return;}
+    ok=(n*P.a.d===P.a.n*d);$('fr5').classList.add(ok?'ok':'ng');
+  }
+  CUR.answered=true;
+  if(ok){CUR.ok++;CUR.combo++;CUR.maxCombo=Math.max(CUR.maxCombo,CUR.combo);CUR.pts+=10+(CUR.combo>=3?5:0);}else{CUR.combo=0;}
+  CUR.res.push({ok,Q});$('qPts').textContent=CUR.pts;
+  $('fb').innerHTML='<div class="fb '+(ok?'ok':'ng')+'"><h4>'+(ok?'⭕ 正解！'+(CUR.combo>=3?'（連続ボーナス +5）':''):'❌ ざんねん')+'</h4>'+fbBody(Q)+'</div>';
+  hide('checkBtn');show('nextBtn');$('nextBtn').textContent=CUR.i===CUR.qs.length-1?'結果を見る ▶':'次へ ▶';renderDots();
+}
+function fbBody(Q){
+  const P=Q.P;
+  if(Q.type==='afind'){
+    const X=Math.max(Math.abs(P.p),Math.abs(P.q));const pos=V(P.a)>0;const key=pos?P.hi:P.lo;
+    return '<ol><li>y の変域が'+(pos?' 0 以上':' 0 以下')+' → グラフは'+(pos?'上':'下')+'に開く → <b>a '+(pos?'&gt;':'&lt;')+' 0</b></li>'+
+      '<li>x の変域で絶対値がいちばん大きいのは <b>x='+xH(Math.abs(P.p)>=Math.abs(P.q)?P.p:P.q)+'</b> → そのとき y が'+(pos?'<span class="maxc">最大</span>':'<span class="minc">最小</span>')+'</li>'+
+      '<li>'+fH(key)+' = a × '+X+'²　→　'+fH(key)+' = '+(X*X)+'a</li>'+
+      '<li>a = '+fH(key)+' ÷ '+(X*X)+' = <b>'+fH(P.a)+'</b></li></ol>'+
+      '<div style="font-size:12.5px">✅ たしかめ：y='+aH(P.a)+' に x='+xH(P.p)+'、'+xH(P.q)+' を入れると y='+fH(P.yp)+'、'+fH(P.yq)+(P.span?'、0 をふくむので':'')+' → '+rH(P.lo,P.hi)+'</div>';
+  }
+  return explainHTML(P.a,P.p,P.q);
+}
+function nextQ(){if(CUR.i<CUR.qs.length-1){CUR.i++;renderQ();window.scrollTo(0,0);}else showResult();}
+function showResult(){
+  CUR.done=true;clearInterval(CUR.timer);const n=CUR.qs.length;const rate=CUR.ok/n;const tm=Date.now()-CUR.t0;
+  $('rStars').textContent=rate===1?'★★★':rate>=.7?'★★☆':rate>=.4?'★☆☆':'☆☆☆';
+  $('rScore').textContent=CUR.ok+' / '+n+' 問正解';
+  $('rRank').textContent=rate===1?'🏆 変域マスター！ 完ぺき！':rate>=.7?'👍 あと少し！ まちがえた問題をグラフで確認しよう':rate>=.4?'💪 0 をふくむかどうか、もう一度チェック！':'🧪 まずは「動かして理解」でグラフを見てみよう';
+  $('rPts').textContent=CUR.pts+'pt';$('rTime').textContent=fmtTime(tm);$('rCombo').textContent=CUR.maxCombo;
+  const key='heniki_best_'+CUR.course;const prev=JSON.parse(localStorage.getItem(key)||'null');
+  if(!prev||CUR.ok>prev.ok||(CUR.ok===prev.ok&&CUR.pts>prev.pts))localStorage.setItem(key,JSON.stringify({ok:CUR.ok,n,pts:CUR.pts}));
+  let h='';const miss=CUR.res.map((r,k)=>({r,k})).filter(x=>!x.r.ok);
+  if(miss.length===0)h='<div class="card" style="text-align:center;font-size:14px">まちがえた問題はありません。すばらしい！ 🎉</div>';
+  else{h='<h2 class="sec" style="margin:4px 0 8px">📒 まちがえた問題の復習（'+miss.length+'問）</h2>';
+    miss.forEach(({r,k})=>{h+='<div class="card rev"><div class="q"><b>Q'+(k+1)+'.</b> '+r.Q.text+'</div>'+fbBody(r.Q)+'<div class="labgo" onclick="openLabFromRev('+k+')">🧪 動かして確かめよう！ この問題をグラフで見る</div></div>';});}
+  $('rReview').innerHTML=h;hideAll();show('result');window.scrollTo(0,0);
+}
+function openLabFromRev(k){const P=CUR.res[k].Q.P;openLab({a:P.a,p:P.p,q:P.q},true);}
+
+/* ========== 画面切り替え ========== */
+function hideAll(){['home','lab','quiz','result'].forEach(hide);}
+function goHomeBtn(){if(!$('quiz').classList.contains('hidden')&&!CUR.done){if(!confirm('とちゅうでやめて、ホームにもどりますか？'))return;CUR.done=true;clearInterval(CUR.timer);}goHome();}
+function goHome(){LAB_FROM_RESULT=false;hideAll();show('home');refreshBest();window.scrollTo(0,0);}
+function refreshBest(){[50,70,90].forEach(c=>{const b=JSON.parse(localStorage.getItem('heniki_best_'+c)||'null');$('best'+c).textContent=b?'ベスト：'+b.ok+'/'+b.n+'問・'+b.pts+'pt':'ベスト：—';});}
+refreshBest();labUpdate();
+</script>
+</body>
+</html>
